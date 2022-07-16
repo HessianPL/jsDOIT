@@ -1,1 +1,1 @@
-web: node jsDOit.js
+web: node jsDOIT.js
