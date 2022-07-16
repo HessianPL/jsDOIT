@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    max-width: 1024px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+body > * {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    justify-content: center;
+}
+
+header {
+    background: #298CD6;
+    min-height: 120px;
+    color: white;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+header h2 {
+    font-size: 1.75em;
+    font-weight: 300;
+}
+
+header h2 small {
+    font-size: .75em;
+}
+
+header h2 small span {
+    font-size: .5em;
+}
+
+main {
+    background-color: #3D4856;
+    min-height: 300px;
+    justify-content: flex-start;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+#newTask {
+    padding: 10px;
+    min-width: 300px;
+}
+
+button {
+    padding: 10px;
+    min-width: 100px;
+}
+
+button:hover {
+    background-color: #3a8981;
+    cursor: pointer;
+}
+
+.delBtn:hover {
+    background-color: #CD648C;
+}
+
+
+#taskList {
+    margin-top: 20px;
+    display: block;
+}
+
+#taskList li {
+    list-style: none;
+}
+
+#taskList span {
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: 5px;
+    min-width: 300px;
+    border: 1px solid gray;
+    background-color: #39716B;
+    font-weight: 300;
+}
+
+#taskList span:hover {
+    border-color: black;
+    background-color: #3a8981;
+    cursor: pointer;
+}
+
+#taskList span:hover:after {
+    content: 'Mark as done';
+    font-style: normal;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+}
+
+#taskList .completed span {
+    font-style: italic;
+    text-decoration: line-through;
+    opacity: 0.5;
+    background-color: dimgray;
+}
+
+#taskList .completed span:hover {
+    background-color: #7c7c7c;
+}
+
+#taskList  .completed span:hover::after {
+    content: 'Mark as undone';
+    position: absolute;
+    right: 10px;
+}
+
+#taskList .completed  button:hover {
+    background-color: #94305A;
+}
+
+footer {
+    background-color: #A1ACBD;
+    padding: 20px;
+    color: #3D4856;
+}
+
+footer a {
+    color: #94305A;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #CD648C;
+    text-decoration: none;
+}
