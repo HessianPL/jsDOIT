@@ -18,7 +18,7 @@ const cookieHandler = async (cookie) => {
         const sessionID = (await randomBytes(8)).toString('hex');
         return sessionID;
     }
-    
+
     return cookie;
 }
 

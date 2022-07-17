@@ -8,7 +8,6 @@ const loadTaskList = async () => {
     const response = await fetch('../tasks/list', {method: 'GET'});
     const data = await response.json();
     const parsedData = JSON.parse(data);
-    console.log({parsedData});
     currentTaskList = parsedData || [];
     return parsedData;
 } //end of loadTaskList()
