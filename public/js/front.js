@@ -1,6 +1,10 @@
 const newTaskFormElement = document.querySelector('#newTaskForm');
 const newTaskElement = document.querySelector('#newTask');
 const taskListElement = document.querySelector('#taskList');
+const actionsTab = document.querySelector('#actions');
+const markAllBtn = document.querySelector('#mark-all');
+const unmarkAllBtn = document.querySelector('#unmark-all');
+const deleteAllBtn = document.querySelector('#delete-all');
 
 let currentTaskList;
 
@@ -38,6 +42,12 @@ const renderTaskList = async () => {
     });
 
     newTaskElement.value = '';
+
+    if (taskList.length > 0) {
+        actionsTab.classList.remove('hidden');
+    } else {
+        actionsTab.classList.add('hidden');
+    }
 } //end of renderTaskList()
 
 const saveTaskList = async (newTaskList) => {
@@ -81,5 +91,32 @@ const markTask = async e => {
     await saveTaskList(currentTaskList);
 }
 
+const markAllTasks = async () => {
+    console.log(currentTaskList);
+    currentTaskList.forEach(el => {
+        el.completed = true;
+    });
+
+    await saveTaskList(currentTaskList);
+}
+
+const unmarkAllTasks = async () => {
+    console.log(currentTaskList);
+    currentTaskList.forEach(el => {
+        el.completed = false;
+    });
+
+    await saveTaskList(currentTaskList);
+}
+
+const deleteAllTasks = async () => {
+    currentTaskList = [];
+    await saveTaskList(currentTaskList);
+}
+
 newTaskFormElement.addEventListener('submit', addNewTask);
+markAllBtn.addEventListener('click', markAllTasks);
+unmarkAllBtn.addEventListener('click', unmarkAllTasks);
+deleteAllBtn.addEventListener('click', deleteAllTasks);
+
 renderTaskList();

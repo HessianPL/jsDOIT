@@ -48,6 +48,7 @@ main {
     justify-content: flex-start;
     padding-top: 40px;
     padding-bottom: 60px;
+    position: relative;
 }
 
 #newTask {
@@ -140,7 +141,7 @@ button:hover::after {
 }
 
 #taskList span:hover:after {
-    content: 'Mark as done';
+    content: 'Click to mark as done';
     font-style: normal;
     color: white;
     font-size: 12px;
@@ -160,13 +161,34 @@ button:hover::after {
 }
 
 #taskList  .completed span:hover::after {
-    content: 'Mark as undone';
+    content: 'Click to unmark';
     position: absolute;
     right: 10px;
 }
 
 #taskList .completed  button:hover {
     background-color: #94305A;
+}
+
+#actions {
+    padding: 5px;
+    position: absolute;
+    bottom: 10px;
+}
+
+#actions span {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+#actions span:hover {
+    color: yellow;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 footer {

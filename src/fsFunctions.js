@@ -1,4 +1,6 @@
 const { readFile, writeFile } = require('fs').promises;
+const { promisify } = require('util');
+const randomBytes = promisify(require('crypto').randomBytes);
 const PATH = process.env.FILEPATH;
 
 const loadFileContent = async (src = PATH) => {
@@ -20,4 +22,13 @@ const saveFileContent = async (newTaskList, sessionID) => {
     });
 }
 
-module.exports = {loadFileContent, saveFileContent};
+const cookieCheck = async (cookie) => {
+    if (!cookie) {
+        const sessionID = (await randomBytes(8)).toString('hex');
+        return sessionID;
+    }
+
+    return cookie;
+}
+
+module.exports = {loadFileContent, saveFileContent, cookieCheck};
