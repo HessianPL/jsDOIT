@@ -6,13 +6,18 @@ const loadFileContent = async (src = PATH) => {
     try {
         fileContent =  JSON.parse(await readFile(PATH, "utf-8"));
     } catch(e) {
-        fileContent = {taskList: []};
+        fileContent = [];
     }
     return fileContent;
 }
 
-const saveFileContent = async (newTaskList) => {
-    await writeFile(PATH, JSON.stringify(newTaskList), {
+const saveFileContent = async (newTaskList, sessionID) => {
+    const currentFileContent = await loadFileContent();
+    currentFileContent[sessionID] = newTaskList;
+
+    console.log('Do zapisania w bazie:', currentFileContent);
+
+    await writeFile(PATH, JSON.stringify(currentFileContent), {
         encoding: "utf-8"
     });
 }

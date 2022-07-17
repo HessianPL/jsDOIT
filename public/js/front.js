@@ -7,14 +7,14 @@ let currentTaskList;
 const loadTaskList = async () => {
     const response = await fetch('../tasks/list', {method: 'GET'});
     const data = await response.json();
-    currentTaskList = JSON.parse(data);
-    return JSON.parse(data);
+    const parsedData = JSON.parse(data);
+    console.log({parsedData});
+    currentTaskList = parsedData || [];
+    return parsedData;
 } //end of loadTaskList()
 
 const renderTaskList = async () => {
-    const {taskList} = await loadTaskList();
-    console.log(taskList); //debug, delete in production phase
-
+    const taskList = await loadTaskList();
     taskListElement.innerHTML = '';
 
     taskList.forEach((el, index) => {
@@ -63,21 +63,21 @@ const addNewTask = async (e) => {
         throw new Error(`Well, you don't need to plan doing nothing, pal. Just do it. Or.. just don't do it? Damn!! :)`)
     }
 
-    taskList['taskList'].push({task: newTaskElement.value.toString(), completed: false});
+    taskList.push({task: newTaskElement.value.toString(), completed: false});
     await saveTaskList(taskList);
 } //end of addNewTask()
 
 const deleteTask = async e => {
-    currentTaskList.taskList.splice(e.target.dataset.id, 1);
+    currentTaskList.splice(e.target.dataset.id, 1);
     await saveTaskList(currentTaskList);
 }
 
 const markTask = async e => {
-    taskStatus = currentTaskList.taskList[e.target.dataset.id].completed;
+    taskStatus = currentTaskList[e.target.dataset.id].completed;
     if (taskStatus) {
-        currentTaskList.taskList[e.target.dataset.id].completed = false;
+        currentTaskList[e.target.dataset.id].completed = false;
     } else {
-        currentTaskList.taskList[e.target.dataset.id].completed = true;
+        currentTaskList[e.target.dataset.id].completed = true;
     }
     await saveTaskList(currentTaskList);
 }
