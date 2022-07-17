@@ -16,11 +16,9 @@ app.use(cookieParser());
 const cookieHandler = async (cookie) => {
     if (!cookie) {
         const sessionID = (await randomBytes(8)).toString('hex');
-        console.log('Nie ma ciastka, ustawiam sessionID:', sessionID.toString('hex'))
         return sessionID;
     }
-
-    console.log('Jest ciastko, odczytuję sesję:', cookie);
+    
     return cookie;
 }
 
@@ -32,12 +30,11 @@ app.put('/tasks/new', async (req, res) => {
 })
 
 app.get('/tasks/list', async (req, res) => {
-    console.log('Tasklist sent to frontend');//@TODO wywalić w produkcji
     const sessionID = await cookieHandler(req.cookies['jsDOIT-session']);
     res.cookie('jsDOIT-session', sessionID);
 
     const fileContent = await loadFileContent();
-    console.log(fileContent[sessionID]);
+
     if (!fileContent[sessionID]) {
         res.json(JSON.stringify([]));
     }

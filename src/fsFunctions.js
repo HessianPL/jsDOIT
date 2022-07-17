@@ -15,8 +15,6 @@ const saveFileContent = async (newTaskList, sessionID) => {
     const currentFileContent = await loadFileContent();
     currentFileContent[sessionID] = newTaskList;
 
-    console.log('Do zapisania w bazie:', currentFileContent);
-
     await writeFile(PATH, JSON.stringify(currentFileContent), {
         encoding: "utf-8"
     });
