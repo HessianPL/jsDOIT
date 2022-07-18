@@ -19,7 +19,9 @@ app.put('/tasks/new', async (req, res) => {
 
 app.get('/tasks/list', async (req, res) => {
     const sessionID = await cookieCheck(req.cookies['jsDOIT-session']);
-    await res.cookie('jsDOIT-session', sessionID);
+    await res.cookie('jsDOIT-session', sessionID, {
+        maxAge: 1000 * 60 * 60 * 24 * 365,
+    });
 
     const fileContent = await loadFileContent();
 

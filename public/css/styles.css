@@ -206,3 +206,36 @@ footer a:hover {
     color: #CD648C;
     text-decoration: none;
 }
+
+@media screen and (max-width: 460px) {
+    #newTaskForm {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #newTask {
+        min-width: 0;
+        width: 95vw;
+    }
+
+    #newTaskForm button {
+        margin-top: 10px;
+    }
+
+    #taskList li {
+        display: flex;
+        flex-direction: column;
+        width: 95vw;
+        margin-bottom: 20px;
+    }
+
+    #taskList span {
+        margin-right: 0;
+    }
+
+    #taskList button {
+        width: 95vw;
+        margin-top: 5px;
+    }
+
+}
