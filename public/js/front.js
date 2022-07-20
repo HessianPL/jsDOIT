@@ -24,7 +24,7 @@ const renderTaskList = async () => {
         const newLi = document.createElement('li');
         const newSpan = document.createElement('span');
         const newDelBtn = document.createElement('button');
-        newDelBtn.innerText = 'Delete';
+        newDelBtn.innerText = 'Del';
         newDelBtn.classList.add('delBtn');
         newDelBtn.dataset.id = index;
         newDelBtn.addEventListener('click', deleteTask);

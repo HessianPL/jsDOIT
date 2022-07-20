@@ -47,65 +47,89 @@ main {
     min-height: 300px;
     justify-content: flex-start;
     padding-top: 40px;
-    padding-bottom: 60px;
+    padding-bottom: 70px;
     position: relative;
+}
+form {
+    display: flex;
+    align-items: center;
+}
+
+form#newTaskForm:hover > *,
+form#newTaskForm:focus > *,
+form#newTaskForm:active > * {
+    background-color: #bfe0b1;
+    font-size: 1.3rem;
+    height: 50px;
+}
+
+form#newTaskForm:hover > input,
+form#newTaskForm:focus > input,
+form#newTaskForm:active > input {
+    min-width: 360px;
+}
+
+form#newTaskForm:hover > button,
+form#newTaskForm:focus > button,
+form#newTaskForm:active > button {
+    min-width: 90px;
+    height: 48px;
 }
 
 #newTask {
     padding: 10px;
-    padding-top: 11px;
-    min-width: 300px;
-}
-
-#newTask:focus {
-    outline: none;
-    background-color: #b3c5de;
+    font-size: 1.1rem;
+    min-width: 320px;
+    height: 40px;
+    border-radius: 5px;
+    transition-property: min-width, font-size, height, background-color;
+    transition-duration: .3s;
+    transition-timing-function: linear;
+    transition-delay: .05s;
 }
 
 button {
-    padding: 10px;
-    min-width: 100px;
-    border: 1px solid transparent;
-    transition: background-color 0.2s linear;
+    background: white url("../img/icons8-plus-50.png") no-repeat right 5px center;
+    background-size: 25px;
+    border-radius: 5px;
+    margin-left: 5px;
+    min-width: 75px;
+    /*border: 1px solid transparent;*/
+    border: none;
+    transition-property: min-width, font-size, height, background-color;
+    transition-duration: .3s;
+    transition-timing-function: linear;
     position: relative;
     overflow: clip;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 7px;
 }
 
-button::after {
-    content: " ➕";
-    position: absolute;
-    right: -20px;
-    top: -20px;
-    opacity: 0;
-    transition-property: opacity, right, top;
-    transition-duration: .2s;
-    transition-timing-function: linear;
+button img {
+    width: 25px;
+    height: auto;
 }
 
 button:hover {
-    background-color: #3a8981;
+    background-color: #a9cba9;
     cursor: pointer;
 }
 
-button:hover::after {
-    opacity: 1;
-    right: 1px;
-    top: 1px;
-    transform: scale(1.3);
-}
-
-.delBtn::after {
-    content: " ➖";
+.delBtn {
+    background: white url("../img/icons8-minus-50.png") no-repeat right 5px center;
+    background-size: 25px;
+    margin-left: 1px;
+    height: 40px;
+    border: 1px solid transparent;
 }
 
 .delBtn:hover {
-    background-color: #CD648C;
+    background-color: #d395ad;
+    border: 1px solid black;
 }
-
-.delBtn:hover::after {
-    top: -2px;
-}
-
 
 #taskList {
     margin-top: 20px;
@@ -118,24 +142,32 @@ button:hover::after {
     overflow: clip;
     display: flex;
     align-items: stretch;
+    height: 42px;
+    min-width: 322px;
 }
 
 #taskList span {
-    display: inline-block;
+    display: flex;
+    align-items: stretch;
     position: relative;
     padding: 10px;
     margin-right: 5px;
-    min-width: 300px;
+    min-width: 320px;
+    height: 40px;
+    vertical-align: middle;
     outline: 1px solid transparent;
     background-color: #39716B;
     font-weight: 300;
     transition-property: border-color, background-color;
     transition-duration: 0.25s;
     transition-timing-function: linear;
+
+    border-radius: 5px;
+    box-shadow: #000000 1px 1px 1px 0px;
 }
 
 #taskList span:hover {
-    outline-color: black;
+    border: 1px solid black;
     background-color: #3a8981;
     cursor: pointer;
 }
@@ -146,7 +178,8 @@ button:hover::after {
     color: white;
     font-size: 12px;
     position: absolute;
-    right: 10px;
+    right: 7px;
+    top: 3px;
 }
 
 #taskList .completed span {
@@ -181,6 +214,7 @@ button:hover::after {
     color: white;
     text-decoration: none;
     margin-right: 10px;
+    line-height:  1.5rem;
 }
 
 #actions span:hover {
@@ -193,7 +227,7 @@ button:hover::after {
 
 footer {
     background-color: #A1ACBD;
-    padding: 20px;
+    padding: 20px 0 10px;
     color: #3D4856;
 }
 
@@ -206,6 +240,9 @@ footer a:hover {
     color: #CD648C;
     text-decoration: none;
 }
+footer p {
+    margin-bottom: 10px;
+}
 
 @media screen and (max-width: 460px) {
     #newTaskForm {
@@ -214,8 +251,7 @@ footer a:hover {
     }
 
     #newTask {
-        min-width: 0;
-        width: 95vw;
+       width: 90vw;
     }
 
     #newTaskForm button {
@@ -225,17 +261,19 @@ footer a:hover {
     #taskList li {
         display: flex;
         flex-direction: column;
-        width: 95vw;
-        margin-bottom: 20px;
+        max-width: 95vw;
+        margin-bottom: 25px;
+        height: unset;
+        align-items: center;
     }
 
     #taskList span {
         margin-right: 0;
+        width: 90vw;
     }
 
     #taskList button {
-        width: 95vw;
-        margin-top: 5px;
+        margin-top: 7px;
     }
 
 }
