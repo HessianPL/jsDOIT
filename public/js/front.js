@@ -77,6 +77,9 @@ const addNewTask = async (e) => {
 } //end of addNewTask()
 
 const deleteTask = async e => {
+    e.target.parentNode.classList.add('removing');
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    await delay(500);
     currentTaskList.splice(e.target.dataset.id, 1);
     await saveTaskList(currentTaskList);
 }

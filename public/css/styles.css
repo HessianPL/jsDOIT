@@ -144,6 +144,16 @@ button:hover {
     align-items: stretch;
     height: 42px;
     min-width: 322px;
+    transition-duration: .5s;
+    transition-property:opacity, height, margin, padding;
+    transition-timing-function: linear;
+}
+
+#taskList li.removing {
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
 }
 
 #taskList span {
