@@ -20,7 +20,7 @@ http://jsdoit.herokuapp.com/
 
 
 ```bash
-    clone https://github.com/HessianPL/jsDOIT.git
+    git clone https://github.com/HessianPL/jsDOIT.git
     npm install
     node jsDOIT.js
 ```
