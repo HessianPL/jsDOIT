@@ -18,11 +18,11 @@ http://jsdoit.herokuapp.com/
 
 ## Installation
 
-Clone and run:
 
 ```bash
-  npm install
-  node jsDOIT.js
+    clone https://github.com/HessianPL/jsDOIT.git
+    npm install
+    node jsDOIT.js
 ```
 
 ## License
